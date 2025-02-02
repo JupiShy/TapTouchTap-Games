@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taptouchtap/game_names.dart';
+import 'package:taptouchtap/about_popup.dart';
+import 'package:taptouchtap/games/click_the_circle.dart';
 
 import 'buttons.dart';
 
@@ -64,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       MenuIconButton(onPressed: _incrementCounter, icon: Icons.panorama_vertical_outlined, label: GameNames.magnetic.value),
                       MenuIconButton(onPressed: _incrementCounter, icon: Icons.numbers, label: GameNames.game2048.value),
-                      MenuIconButton(onPressed: _incrementCounter, icon: Icons.circle, label: GameNames.clickTheCircle.value),
+                      MenuIconButton(onPressed: openClickTheCircle, icon: Icons.circle, label: GameNames.clickTheCircle.value),
                       MenuIconButton(onPressed: _incrementCounter, icon: Icons.ssid_chart, label: GameNames.fractal.value),
                       MenuIconButton(onPressed: _incrementCounter, icon: Icons.sports_martial_arts, label: GameNames.squishy.value),
                       MenuIconButton(onPressed: _incrementCounter, icon: Icons.mood, label: GameNames.wideSmile.value),
@@ -86,10 +88,17 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: () => aboutPopup(context),
+        tooltip: 'About',
+        child: const Icon(Icons.info_outline),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+    void openClickTheCircle(){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ClickTheCircle()),
     );
   }
 }
